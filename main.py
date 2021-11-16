@@ -1,9 +1,15 @@
 def encodeInDSP(n):
     res = ""
-    if n == 0: res = a1[0]
+    symbCount = 0
+    if n == 0:
+        res = a1[0]
+        symbCount+=1
     while n:
         res+=a1[int(n%3)]
         n//=3
+        symbCount+=1
+    if symbCount < 4:
+        res+=(4 - symbCount) * a1[0]
     return res
 
 
@@ -25,6 +31,5 @@ a1 = "д с п".split(" ")
 a1 = "Денис Сергеевич Подкопаев".split(" ")
 fillDictionary()
 
-### Непосредственно здесь происходит магия!
 s = "Здравствуйте Денис Сергеевич! Могу вас заверить, что новый год буду встречать в маске и перчатках.".lower()
 encode(s)
